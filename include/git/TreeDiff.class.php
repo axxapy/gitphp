@@ -67,6 +67,7 @@ class GitPHP_TreeDiff implements Iterator
 	 * @param string $toHash to commit hash
 	 * @param string $fromHash from commit hash
 	 * @param boolean $renames whether to detect file renames
+	 * @throws Exception
 	 */
 	public function __construct($project, $exe, $toHash, $fromHash = '', $renames = false)
 	{
