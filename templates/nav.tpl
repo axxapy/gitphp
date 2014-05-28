@@ -38,6 +38,10 @@
    {else}
      <a href="{geturl project=$project action=commitdiff hash=$commit}">{t}commitdiff{/t}</a>
    {/if}
+
+   {if $current=='branchdiff' || !$commit}
+     | {t}branchdiff{/t}
+   {/if}
    | 
    {if $current=='tree' || !$commit}
      {t}tree{/t}

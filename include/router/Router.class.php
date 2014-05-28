@@ -244,7 +244,9 @@ class GitPHP_Router
 			'prefix' => 'prefix',
 			'sort' => 'sort',
 			'lang' => 'l',
-			'redirect' => 'redirect'
+			'redirect' => 'redirect',
+			'branch' => 'b',
+			'branchparent' => 'bp',
 		);
 	}
 
@@ -385,6 +387,13 @@ class GitPHP_Router
 			case 'commitdiff_plain':
 				$controller = new GitPHP_Controller_Commitdiff();
 				if ($action === 'commitdiff_plain')
+					$controller->SetParam('output', 'plain');
+				break;
+
+			case 'branchdiff':
+			case 'branchdiff_plain':
+				$controller = new GitPHP_Controller_Branchdiff();
+				if ($action === 'branchdiff_plain')
 					$controller->SetParam('output', 'plain');
 				break;
 
@@ -626,7 +635,7 @@ class GitPHP_Router
 		if ($this->cleanurl) {
 
 			if (!empty($params['action'])) {
-				switch ($params['action']) {
+				switch ($params['actparams[ion']) {
 					case 'blob':
 					case 'commit':
 					case 'tree':

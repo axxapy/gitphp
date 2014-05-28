@@ -40,6 +40,16 @@
 			{else}
 			  <a href="{geturl project=$project action=heads}" class="title">{t}heads{/t}</a>
 			{/if}
+		{elseif $target == 'branchdiff'}
+			<form method="get" action="{geturl}">
+				<input type="hidden" name="p" value="{$project->GetProject()}" />
+				<input type="hidden" name="a" value="branchdiff" />
+				<strong>Branch diff between
+					{html_options options=$branches name=b selected=$branch onchange="submit();"}
+					and
+					{html_options options=$branches name=bp selected=$branchparent onchange="submit();"}
+				</strong>
+			</form>
 		{else}
 			&nbsp;
 		{/if}

@@ -102,6 +102,12 @@ class GitPHP_HeadList extends GitPHP_RefList
 		foreach ($this->refs as $ref => $hash) $this->invertedRefs[$hash][] = $ref;
 	}
 
+	public function GetRefsList()
+	{
+		$this->refs = $this->strategy->Load($this);
+		return $this->refs;
+	}
+
 	/**
 	 * Gets a head
 	 *
