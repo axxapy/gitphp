@@ -276,6 +276,11 @@ abstract class GitPHP_ControllerBase
 		$this->tpl->error_reporting = E_ALL & ~E_NOTICE;
 		$this->tpl->merge_compiled_includes = true;
 		$this->tpl->addPluginsDir(GITPHP_INCLUDEDIR . 'smartyplugins');
+		if ($this->config->GetValue('debug')) {
+			$this->tpl->debugging = true;
+			$this->tpl->caching = false;
+			$this->tpl->force_compile = true;
+		}
 
 		if ($this->config->GetValue('cache')) {
 			$cacheDir = GITPHP_CACHEDIR . 'templates';
